@@ -9,14 +9,14 @@ def main(page: ft.Page) -> None:
     page.spacing = 30
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    
-    page.bgcolor = '#FFFFFF'
+
+    page.bgcolor = '#000000'
     page.window.width = 360
     page.window.height = 700
     page.window.resizable = False
 
     #
-    key = ft.Text('Else key', size=20, color='pink')
+    key = ft.Text('Key', size=20, color='pink')
     shift = ft.Text('Shift', size=20, color='red')
     ctrl = ft.Text('Ctrl', size=20, color='blue')
     alt = ft.Text('Alt', size=20, color='green')
@@ -36,7 +36,7 @@ def main(page: ft.Page) -> None:
 
     #
     page.add(
-        ft.Text('Зажми кнопки'),
+        ft.Text('exexexexex'),
         ft.Row(
             controls=[key, shift, alt,ctrl],
             alignment=ft.MainAxisAlignment.CENTER)
