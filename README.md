@@ -1,1 +1,1 @@
-a bit stuff for main projects
+some stuff for my projects
