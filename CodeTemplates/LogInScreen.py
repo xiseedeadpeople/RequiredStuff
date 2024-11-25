@@ -1,33 +1,60 @@
+# flet run test.py
 import flet as ft
-from flet_core import ControlEvent, TextField, Checkbox, ElevatedButton
 
+button = ft.ElevatedButton(
+    text="Кастомная кнопка",
+    width=400,
+    height=200,
+    style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=ft.BorderRadius(
+        top_left=60,
+        top_right=60,
+        bottom_left=60,
+        bottom_right=60
+    )),
+
+    bgcolor='#F1F1F1',
+    color=ft.colors.WHITE
+    )
+)
 
 def main(page: ft.Page) -> None:
 
     # window setup
-    page.title = 'signup'
-    page.vertical_alignment = ft.MainAxisAlignment.CENTER
-    page.bgcolor = '#FFFFFF'
-    page.window.width = 360
-    page.window.height = 700
-    page.window.resizable = False
+    # page.spacing = 30
+    page.vertical_alignment = 'center'
+    page.horizontal_alignment = 'center'
+
+    # page.window_title_bar_hidden = True
+    page.window.full_screen = False
+    page.bgcolor = '#000000'
+    page.window.width = 1920
+    page.window.height = 1080
+    # page.window.resizable = False
 
     # fields setup
-    text_username: ft.TextField = TextField(label='Логин', text_align=ft.TextAlign.LEFT, width=200)
-    text_password: ft.TextField = TextField(label='Пароль', text_align=ft.TextAlign.LEFT, width=200, password=True)
-    checkbox_signup: ft.Checkbox = Checkbox(label='Я соглашаюсь четотам', value=False)
-    submit_button = ft.ElevatedButton = ElevatedButton(text='Зарегестрироваться', width=200, disabled=True)
+    text_username: ft.TextField = ft.TextField(label='привет, {юзернейм}', text_align=ft.TextAlign.LEFT,
+                                               width=500, text_size=20, hint_text='логин',
+                                               border_color='#FFFFFF')
 
-    def validate(e: ControlEvent) -> None:
+    text_password: ft.TextField = ft.TextField(label=' ', text_align=ft.TextAlign.LEFT,
+                                               width=500, text_size=20, hint_text='пароль',
+                                               border_color='#FFFFFF', password=True, can_reveal_password=True)
+
+    checkbox_signup: ft.Checkbox = ft.Checkbox(label='соглашаюсь с правилами использования (реферну позже их тут)', value=False, )
+    submit_button = ft.ElevatedButton = ft.ElevatedButton(text='войти', width=500, disabled=True)
+
+    def validate(e: ft.ControlEvent) -> None:
         """ проверяем """
         if all([text_username.value, text_password.value, checkbox_signup.value]):
             submit_button.disabled = False
+
         else:
             submit_button.disabled = True
 
         page.update()
 
-    def submit(e: ControlEvent) -> None:
+    def submit(e: ft.ControlEvent) -> None:
+        """Функция, которая идет после прохода логин экрана"""
         print(f'Username: {text_username.value}')
         print(f'Password: {text_password.value}')
 
@@ -51,11 +78,11 @@ def main(page: ft.Page) -> None:
             controls=[
                 ft.Column(
                     [text_username,
-                    text_password,
-                    checkbox_signup,
-                    submit_button]
+                     text_password,
+                     checkbox_signup,
+                     submit_button]
                 )
-            ], alignment= ft.MainAxisAlignment.CENTER
+            ], alignment=ft.MainAxisAlignment.CENTER
         )
     )
 
