@@ -1,10 +1,19 @@
 import flet as ft
 from flet_core import LinearGradient
 
+# TODO:
+#  https://habr.com/ru/articles/237931/                                -       DPI, screen resolution
+#  https://danilin.biz/ios-device-display-resolution-reference         -       logic iphone screen resolution
+
+
 
 def main(page: ft.Page):
     page.bgcolor = 'white'
-    page.window.width = 300
+    page.window.width = 390
+    page.window.height = 844
+    page.window.always_on_top = True
+    page.window.maximizable = False
+    page.window.resizable =False
     page.spacing = 0
     page.padding = 0
 
